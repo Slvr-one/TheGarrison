@@ -1,0 +1,28 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: elastic-search
+#   namespace: argocd
+
+# spec:
+#   project: default
+
+#   source:
+#     chart: elasticsearch
+#     repoURL: https://helm.elastic.co
+#     targetRevision: 8.5.1
+#     helm:
+#       releaseName: elastic
+
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: efk
+
+#   syncPolicy:
+#     syncOptions:
+#     - CeateNamespace=true
+#     automated:
+#       selfHeal: true
+#       prune: true
+
+            

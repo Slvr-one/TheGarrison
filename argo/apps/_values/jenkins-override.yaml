@@ -1,0 +1,6 @@
+controller:
+  image: "514095112279.dkr.ecr.eu-central-1.amazonaws.com/jenkins_docker"
+  tag: "1.7.1"
+  # installPlugins: yes
+  # imagePullSecretName: registry-secret
+adminUser: "admin"
