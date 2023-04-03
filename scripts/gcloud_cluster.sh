@@ -2,30 +2,30 @@
 set -euo pipefail
 
 
-gcloud compute networks create kubernetes-the-hard-way --subnet-mode custom
+gcloud compute networks create k8s-one --subnet-mode custom
 
 gcloud compute networks subnets create kubernetes \
-  --network kubernetes-the-hard-way \
+  --network k8s-one \
   --range 10.240.0.0/24
 
-gcloud compute firewall-rules create kubernetes-the-hard-way-allow-internal \
+gcloud compute firewall-rules create k8s-one-allow-internal \
   --allow tcp,udp,icmp \
-  --network kubernetes-the-hard-way \
+  --network k8s-one \
   --source-ranges 10.240.0.0/24,10.200.0.0/16
 
-gcloud compute firewall-rules create kubernetes-the-hard-way-allow-external \
+gcloud compute firewall-rules create k8s-one-allow-external \
   --allow tcp:22,tcp:6443,icmp \
-  --network kubernetes-the-hard-way \
+  --network k8s-one \
   --source-ranges 0.0.0.0/0
 
 verify:
-# gcloud compute firewall-rules list --filter="network:kubernetes-the-hard-way"
+# gcloud compute firewall-rules list --filter="network:k8s-one"
 
-gcloud compute addresses create kubernetes-the-hard-way \
+gcloud compute addresses create k8s-one \
   --region $(gcloud config get-value compute/region)
 
 verify:
-# gcloud compute addresses list --filter="name=('kubernetes-the-hard-way')"
+# gcloud compute addresses list --filter="name=('k8s-one')"
 
 ---
 
@@ -44,7 +44,7 @@ for i in 0 1 2; do
     --private-network-ip 10.240.0.1${i} \
     --scopes compute-rw,storage-ro,service-management,service-control,logging-write,monitoring \
     --subnet kubernetes \
-    --tags kubernetes-the-hard-way,controller
+    --tags k8s-one,controller
 done
 
 # Kubernetes Workers:
@@ -60,11 +60,11 @@ for i in 0 1 2; do
     --private-network-ip 10.240.0.2${i} \
     --scopes compute-rw,storage-ro,service-management,service-control,logging-write,monitoring \
     --subnet kubernetes \
-    --tags kubernetes-the-hard-way,worker
+    --tags k8s-one,worker
 done
 
 verify:
-# gcloud compute instances list --filter="tags.items=kubernetes-the-hard-way"
+# gcloud compute instances list --filter="tags.items=k8s-one"
 
 gcloud compute ssh controller-0
 
@@ -83,7 +83,7 @@ Client Authentication Configs:
 
 Kubernetes Public IP Address:
 
-KUBERNETES_PUBLIC_ADDRESS=$(gcloud compute addresses describe kubernetes-the-hard-way \
+KUBERNETES_PUBLIC_ADDRESS=$(gcloud compute addresses describe k8s-one \
   --region $(gcloud config get-value compute/region) \
   --format 'value(address)')
 
@@ -92,7 +92,7 @@ KUBERNETES_PUBLIC_ADDRESS=$(gcloud compute addresses describe kubernetes-the-har
 The kubelet Kubernetes Configuration File:
 
 for instance in worker-0 worker-1 worker-2; do
-  kubectl config set-cluster kubernetes-the-hard-way \
+  kubectl config set-cluster k8s-one \
     --certificate-authority=ca.pem \
     --embed-certs=true \
     --server=https://${KUBERNETES_PUBLIC_ADDRESS}:6443 \
@@ -105,7 +105,7 @@ for instance in worker-0 worker-1 worker-2; do
     --kubeconfig=${instance}.kubeconfig
 
   kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
+    --cluster=k8s-one \
     --user=system:node:${instance} \
     --kubeconfig=${instance}.kubeconfig
 
@@ -116,7 +116,7 @@ done
 The kube-proxy Kubernetes Configuration File:
 
 {
-  kubectl config set-cluster kubernetes-the-hard-way \
+  kubectl config set-cluster k8s-one \
     --certificate-authority=ca.pem \
     --embed-certs=true \
     --server=https://${KUBERNETES_PUBLIC_ADDRESS}:6443 \
@@ -129,7 +129,7 @@ The kube-proxy Kubernetes Configuration File:
     --kubeconfig=kube-proxy.kubeconfig
 
   kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
+    --cluster=k8s-one \
     --user=system:kube-proxy \
     --kubeconfig=kube-proxy.kubeconfig
 
@@ -141,7 +141,7 @@ The kube-proxy Kubernetes Configuration File:
 The kube-controller-manager Kubernetes Configuration File:
 
 {
-  kubectl config set-cluster kubernetes-the-hard-way \
+  kubectl config set-cluster k8s-one \
     --certificate-authority=ca.pem \
     --embed-certs=true \
     --server=https://127.0.0.1:6443 \
@@ -154,7 +154,7 @@ The kube-controller-manager Kubernetes Configuration File:
     --kubeconfig=kube-controller-manager.kubeconfig
 
   kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
+    --cluster=k8s-one \
     --user=system:kube-controller-manager \
     --kubeconfig=kube-controller-manager.kubeconfig
 
@@ -166,7 +166,7 @@ The kube-controller-manager Kubernetes Configuration File:
 The kube-scheduler Kubernetes Configuration File:
 
 {
-  kubectl config set-cluster kubernetes-the-hard-way \
+  kubectl config set-cluster k8s-one \
     --certificate-authority=ca.pem \
     --embed-certs=true \
     --server=https://127.0.0.1:6443 \
@@ -179,7 +179,7 @@ The kube-scheduler Kubernetes Configuration File:
     --kubeconfig=kube-scheduler.kubeconfig
 
   kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
+    --cluster=k8s-one \
     --user=system:kube-scheduler \
     --kubeconfig=kube-scheduler.kubeconfig
 
@@ -191,7 +191,7 @@ The kube-scheduler Kubernetes Configuration File:
 The admin Kubernetes Configuration File:
 
 {
-  kubectl config set-cluster kubernetes-the-hard-way \
+  kubectl config set-cluster k8s-one \
     --certificate-authority=ca.pem \
     --embed-certs=true \
     --server=https://127.0.0.1:6443 \
@@ -204,7 +204,7 @@ The admin Kubernetes Configuration File:
     --kubeconfig=admin.kubeconfig
 
   kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
+    --cluster=k8s-one \
     --user=admin \
     --kubeconfig=admin.kubeconfig
 
