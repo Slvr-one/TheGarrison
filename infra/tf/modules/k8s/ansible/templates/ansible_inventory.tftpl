@@ -1,0 +1,16 @@
+[controllers]
+%{ for item in controllers ~}
+${item.public_ip}
+%{ endfor ~}
+
+[controllers:vars]
+ansible_user=${user}
+
+[workers]
+%{ for item in workers ~}
+${item.public_ip}
+%{ endfor ~}
+
+[workers:vars]
+ansible_user=${user}
+ansible_password=

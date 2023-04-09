@@ -13,18 +13,12 @@ resource "aws_instance" "worker" {
   vpc_security_group_ids = [var.k8s_sg_id]
   key_name               = var.keypair_name
 
-  tags = {
-    Name            = "worker-${count.index}"
-    ansibleFilter   = var.ansibleFilter
-    ansibleNodeType = "worker"
-    ansibleNodeName = "worker${count.index}"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
-}
-
-output "kubernetes_workers_public_ip" {
-  value = join(",", aws_instance.worker.*.public_ip)
+  tags = merge(var.tags, 
+    {
+      Name            = "worker-${count.index}"
+      ansibleFilter   = var.ansibleFilter
+      ansibleNodeType = "worker"
+      ansibleNodeName = "worker${count.index}"
+    }
+  )
 }

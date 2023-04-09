@@ -3,13 +3,11 @@ resource "aws_vpc" "k8s" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
 
-  tags = {
-    Name = var.vpc_name
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name = var.vpc_name
+    }
+  )
 }
 
 # DHCP Options (not required, identical to Default Option):
@@ -17,13 +15,11 @@ resource "aws_vpc_dhcp_options" "dns_resolver" {
   domain_name         = "${var.region}.compute.internal"
   domain_name_servers = ["AmazonProvidedDNS"]
 
-  tags = {
-    Name = var.vpc_name
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name = var.vpc_name
+    }
+  )
 }
 
 resource "aws_vpc_dhcp_options_association" "dns_resolver" {
@@ -47,13 +43,11 @@ resource "aws_route_table" "k8s" {
     gateway_id = aws_internet_gateway.gw.id
   }
 
-  tags = {
-    Name = "kubernetes"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name = "kubernetes"
+    }
+  )
 }
 
 resource "aws_route_table_association" "k8s" {

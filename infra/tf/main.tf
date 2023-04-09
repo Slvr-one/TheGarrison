@@ -1,6 +1,7 @@
-# network for k8s:
+
+#k8s ->
 module "network" {
-  source = "./modules/network"
+  source = "./modules/k8s/network"
 
   control_cidr       = var.control_cidr
   keypair_public_key = var.keypair_public_key
@@ -12,9 +13,8 @@ module "network" {
   tags   = var.tags
 }
 
-# bootstrap k8s cluster:
 module "cluster" {
-  source = "./modules/cluster"
+  source = "./modules/k8s/cluster"
 
   amis = var.amis
   zone = var.zone
@@ -45,18 +45,36 @@ module "cluster" {
 
 
 module "iam" {
-  source = "./modules/iam"
+  source = "./modules/k8s/iam"
 
   tags = var.tags
 }
 
 module "ansible" {
-  source = "./modules/ansible"
+  source = "./modules/k8s/ansible"
 
-  HA = var.HA
+  HA          = var.HA
   controllers = module.cluster.control-plane_nodes
-  workers = module.cluster.worker_nodes
+  workers     = module.cluster.worker_nodes
 }
+
+#state ->
+
+# module "s3" {
+#   source            = "./modules/state/s3"
+#   kms_master_key_id = module.kms.kms_key.arn
+#   # bucket_name = var.tfstate_bucket_name
+# }
+
+# module "kms" {
+#   source = "./modules/state/kms"
+#   # bucket_name = var.tfstate_bucket_name
+# }
+
+# module "dynamo" {
+#   source = "./modules/state/dynamo"
+# }
+
 # module "s3_bucket" {
 #   source = "terraform-aws-modules/s3-bucket/aws"
 
@@ -85,5 +103,19 @@ module "ansible" {
 #   tags = {
 #     Terraform   = "true"
 #     Environment = "staging"
+#   }
+# }
+
+# module "lb_role" {
+#   source    = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+
+#   role_name = "${var.env_name}_eks_lb"
+#   attach_load_balancer_controller_policy = true
+
+#   oidc_providers = {
+#     main = {
+#       provider_arn               = module.eks.oidc_issuer
+#       namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
+#     }
 #   }
 # }

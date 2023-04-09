@@ -16,16 +16,14 @@ resource "aws_instance" "controller" {
   vpc_security_group_ids = [var.control-plane_sg_id, var.k8s_sg_id]
   key_name               = var.keypair_name
 
-  tags = {
-    Name            = "controller-${count.index}"
-    ansibleFilter   = var.ansibleFilter
-    ansibleNodeType = "controller"
-    ansibleNodeName = "controller${count.index}"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name            = "controller-${count.index}"
+      ansibleFilter   = var.ansibleFilter
+      ansibleNodeType = "controller"
+      ansibleNodeName = "controller${count.index}"
+    }
+  )
 }
 
 # K8s API Load Balancer:
@@ -48,15 +46,13 @@ resource "aws_elb" "k8s_api" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 15
-    target              = "HTTP:8080/healthz"
+    target              = "HTTP:8080/health"
     interval            = 30
   }
 
-  tags = {
-    Name = "kubernetes"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name = "kubernetes"
+    }
+  )
 }

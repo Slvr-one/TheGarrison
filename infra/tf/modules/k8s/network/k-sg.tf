@@ -44,11 +44,9 @@ resource "aws_security_group" "k8s" {
     cidr_blocks = ["${var.control_cidr}"]
   }
 
-  tags = {
-    Name = "kubernes"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name = "kubernetes"
+    }
+  )
 }

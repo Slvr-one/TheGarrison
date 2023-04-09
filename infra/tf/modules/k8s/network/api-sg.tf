@@ -19,11 +19,9 @@ resource "aws_security_group" "k8s_api" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "kubernetes-api"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name = "kubernetes-api" ##????
+    }
+  )
 }

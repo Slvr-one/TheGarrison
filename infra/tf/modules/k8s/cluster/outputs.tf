@@ -22,3 +22,7 @@ output "etcd_nodes" {
 output "worker_nodes" {
   value = aws_instance.worker.*
 }
+
+# output "kubernetes_workers_public_ip" {
+#   value = join(",", aws_instance.worker.*.public_ip)
+# }

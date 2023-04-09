@@ -13,14 +13,12 @@ resource "aws_instance" "etcd" {
   vpc_security_group_ids = [var.control-plane_sg_id]
   key_name               = var.keypair_name
 
-  tags = {
-    Name            = "etcd-${count.index}"
-    ansibleFilter   = var.ansibleFilter
-    ansibleNodeType = "etcd"
-    ansibleNodeName = "etcd${count.index}"
-
-    Owner           = var.tags["Owner"]
-    expiration_date = var.tags["expiration_date"]
-    bootcamp        = var.tags["bootcamp"]
-  }
+  tags = merge(var.tags, 
+    {
+      Name            = "etcd-${count.index}"
+      ansibleFilter   = var.ansibleFilter
+      ansibleNodeType = "etcd"
+      ansibleNodeName = "etcd${count.index}"
+    }
+  )
 }
