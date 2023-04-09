@@ -50,6 +50,13 @@ module "iam" {
   tags = var.tags
 }
 
+module "ansible" {
+  source = "./modules/ansible"
+
+  HA = var.HA
+  controllers = module.cluster.control-plane_nodes
+  workers = module.cluster.worker_nodes
+}
 # module "s3_bucket" {
 #   source = "terraform-aws-modules/s3-bucket/aws"
 

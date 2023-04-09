@@ -5,12 +5,12 @@ resource "aws_instance" "controller" {
   ami           = lookup(var.amis, var.region)
   instance_type = var.controller_instance_type
 
-  iam_instance_profile = var.k8s_iam_profile #module.iam.k8s_iam_profile
+  iam_instance_profile = var.k8s_iam_profile
 
   subnet_id                   = var.k8s_subnet_id
   private_ip                  = cidrhost(var.vpc_cidr, 20 + count.index)
-  associate_public_ip_address = true  # Instances have public, dynamic IP
-  source_dest_check           = false # TODO Required??
+  associate_public_ip_address = true
+  source_dest_check           = false
 
   availability_zone      = var.zone
   vpc_security_group_ids = [var.control-plane_sg_id, var.k8s_sg_id]
