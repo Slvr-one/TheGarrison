@@ -3,31 +3,41 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.47.0" #"~> 3.0"
+      version = "4.62.0"
+    }
+
+    template = {
+      source  = "hashicorp/template"
+      version = "2.2.0"
+    }
+
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.1"
     }
     # helm = {
     #   source  = "hashicorp/helm"
-    #   version = "2.8.0"
+    #   version = "2.9.0"
     # }
     # kubernetes = {
     #   source  = "hashicorp/kubernetes"
-    #   version = "2.16.1"
+    #   version = "2.19.0"
     # }
     # tls = {
     #   source  = "hashicorp/tls"
     #   version = "4.0.4"
     # }
-    # kubectl = { //enabling the server-side apply on the kubectl provider.
+    # kubectl = { 
     #   source  = "gavinbunney/kubectl"
     #   version = ">= 1.7.0"
     # }
   }
 
   # backend "s3" {
-  #   bucket = "dvir-cluster-terraform-state"
-  #   key = "dvir-cluster/terraform.tfstate"
+  #   bucket = "dvir-tf-state"
+  #   key = "dvir/tf.tfstate"
   #   region = "eu-central-1"
-  #   dynamodb_table = "dvir-cluster-tf-state"
+  #   dynamodb_table = "dvir-tf-state"
   #   encrypt = true
   # }
 }
@@ -36,6 +46,21 @@ provider "aws" {
   region  = var.region
   profile = var.profile #"default"
 }
+
+# provider "kubernetes" {
+#   host                   = data.aws_eks_cluster.cluster.endpoint
+#   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+#   exec {
+#     api_version = "client.authentication.k8s.io/v1alpha1"
+#     command     = "aws"
+#     args = [
+#       "eks",
+#       "get-token",
+#       "--cluster-name",
+#       data.aws_eks_cluster.cluster.name
+#     ]
+#   }
+# }
 
 # provider "helm" {
 #   kubernetes {

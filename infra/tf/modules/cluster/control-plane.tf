@@ -1,7 +1,7 @@
 # K8s Control Pane instances:
 resource "aws_instance" "controller" {
 
-  count         = 3
+  count         = var.HA ? 3 : 1
   ami           = lookup(var.amis, var.region)
   instance_type = var.controller_instance_type
 

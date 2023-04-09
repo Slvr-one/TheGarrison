@@ -1,14 +1,38 @@
 profile = "default"
-
-region = "eu-central-1" #frankfurt
-zone = "eu-central-1a"
-cluster_name = "dev-24"
+region  = "eu-central-1" #frankfurt
+zone    = "eu-central-1a"
 
 tags = {
   Owner           = "Dvir Gross"
   expiration_date = "x.x.x"
   bootcamp        = "16"
 }
+
+HA = true
+
+amis = { eu-central-1 = "ami-0ec7f9846da6b0f61" }
+
+cluster_name = "dev-24"
+elb_name     = "kubernetes"
+keypair_name = "kp-one"
+
+k8s_cluster_dns = "10.31.0.1"
+
+vpc_cidr            = "10.43.0.0/16"
+control_cidr        = "147.235.205.46/32"
+kubernetes_pod_cidr = "10.200.0.0/16"
+
+
+instance_user      = "ubuntu"
+keypair_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmI+/POIw5Gg1ZggK68Zt+ftLOvYdXcz1Q4rdRaEtVeHgX5uXjPuWvaEhqZ33tcZtxpgvv/vxBLhokLgP7nC7LdTJL2G91xbZikp+b/Y0uXG4COETkOneB5BqMhUJD3qUSgc+PzOMmrNGcz+rzHXLfWQzIWYWdq8yxcbwkmZgbyg9AvFlFCJr3k8nDjPzFRWnjRNd9dxdarx6TtJiDsKz5EaEfaczqno9OOM73X0t0djlRXzRT5zJiuwK8tk7SxW19NBxvp/jwg684ivcV/xind/t8I4mLe71tKxYOLg0R7mIM/4C13IdZ9OhucIfbgMsO31vLDwd1VPuaHA+lIuRvOshaG8klANIGxfGMZxhVb07K95fpCJz1GY+cR4oEvd3DOxIqRrBzFg4LoS53aTj69XearPw8ZHsBaXCpcUEHHSmpvTkWUtWponuZotJsvUUQ1wyRKPTQFAIFfi6WtiCwazMjsXyPlwDiUjYl7BXJUGc9CByL2DDpbUwOXJpPTYU= dvir@vivobook"
+
+ansibleFilter = "Kubernetes01" #CHANGE instance_filters = tag:ansibleFilter=Kubernetes01 in ./ansible/hosts/ec2.ini
+
+etcd_instance_type       = "t2.medium"
+controller_instance_type = "t2.medium"
+worker_instance_type     = "t2.medium"
+
+# env = "dev"
 
 # configuration = [
 #   {
@@ -37,24 +61,6 @@ tags = {
 #   }
 # ]
 
-etcd_instance_type = "t2.medium"
-controller_instance_type = "t2.medium"
-worker_instance_type = "t2.medium"
-
-kubernetes_pod_cidr = "10.200.0.0/16"
-ansibleFilter     = "Kubernetes01" # IF YOU CHANGE THIS YOU HAVE TO CHANGE instance_filters = tag:ansibleFilter=Kubernetes01 in ./ansible/hosts/ec2.ini
-elb_name     = "kubernetes"
-vpc_cidr = "10.43.0.0/16"
-k8s_cluster_dns = "10.31.0.1"
-
-instance_user = "ubuntu"
-keypair_name       = "kp-one"
-keypair_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmI+/POIw5Gg1ZggK68Zt+ftLOvYdXcz1Q4rdRaEtVeHgX5uXjPuWvaEhqZ33tcZtxpgvv/vxBLhokLgP7nC7LdTJL2G91xbZikp+b/Y0uXG4COETkOneB5BqMhUJD3qUSgc+PzOMmrNGcz+rzHXLfWQzIWYWdq8yxcbwkmZgbyg9AvFlFCJr3k8nDjPzFRWnjRNd9dxdarx6TtJiDsKz5EaEfaczqno9OOM73X0t0djlRXzRT5zJiuwK8tk7SxW19NBxvp/jwg684ivcV/xind/t8I4mLe71tKxYOLg0R7mIM/4C13IdZ9OhucIfbgMsO31vLDwd1VPuaHA+lIuRvOshaG8klANIGxfGMZxhVb07K95fpCJz1GY+cR4oEvd3DOxIqRrBzFg4LoS53aTj69XearPw8ZHsBaXCpcUEHHSmpvTkWUtWponuZotJsvUUQ1wyRKPTQFAIFfi6WtiCwazMjsXyPlwDiUjYl7BXJUGc9CByL2DDpbUwOXJpPTYU= dvir@vivobook"
-control_cidr       = "147.235.205.46/32"
-amis               = { eu-central-1 = "ami-0ec7f9846da6b0f61" }
-
-# env = "dev"
-
 # cluster = [
 #   {
 #     node_group = {
@@ -70,11 +76,6 @@ amis               = { eu-central-1 = "ami-0ec7f9846da6b0f61" }
 #   },
 # ]
 
-# service_port = 5000
-
-# image = "514095112279.dkr.ecr.eu-central-1.amazonaws.com/bookmaker"
-
-# image_tag = "latest"
 
 # source_files = {
 #   user_data = "./user_data.sh"
@@ -85,10 +86,3 @@ amis               = { eu-central-1 = "ami-0ec7f9846da6b0f61" }
 
 # cidr_block = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 # cidr_block = ["10.0.1.0/24"]
-
-# user_data = "./user_data.sh"
-
-# ec2 = {
-#   keyPairName  = "dvir_ted"
-#   instanceType = "t2.micro"
-# }
