@@ -33,13 +33,13 @@ terraform {
     # }
   }
 
-  # backend "s3" {
-  #   bucket = "dvir-tf-state"
-  #   key = "dvir/tf.tfstate"
-  #   region = "eu-central-1"
-  #   dynamodb_table = "dvir-tf-state"
-  #   encrypt = true
-  # }
+  backend "s3" {
+    bucket = "dvir-tf-state"
+    key = "dvir/tf.tfstate"
+    region = "eu-central-1"
+    dynamodb_table = "tf-state"
+    encrypt = true
+  }
 }
 
 provider "aws" {
