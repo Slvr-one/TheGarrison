@@ -69,12 +69,15 @@ variable "ansibleFilter" {
 
 
 variable "etcd_instance_type" {
+  description = "instance type to use with etcd instances"
 }
 
 variable "controller_instance_type" {
+  description = "instance type to use with controller instances"
 }
 
 variable "worker_instance_type" {
+  description = "instance type to use with workers instances"
 }
 
 variable "keypair_name" {

@@ -50,6 +50,12 @@ module "iam" {
   tags = var.tags
 }
 
+module "tls" {
+  source = "./modules/tls"
+
+  keypair_name = var.keypair_name
+}
+
 module "ansible" {
   source = "./modules/ansible"
 

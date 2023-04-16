@@ -15,6 +15,12 @@ terraform {
       source  = "hashicorp/null"
       version = "3.2.1"
     }
+    
+    tls = {
+      source  = "hashicorp/tls"
+      version = "4.0.4"
+    }
+    
     # helm = {
     #   source  = "hashicorp/helm"
     #   version = "2.9.0"
@@ -22,10 +28,6 @@ terraform {
     # kubernetes = {
     #   source  = "hashicorp/kubernetes"
     #   version = "2.19.0"
-    # }
-    # tls = {
-    #   source  = "hashicorp/tls"
-    #   version = "4.0.4"
     # }
     # kubectl = { 
     #   source  = "gavinbunney/kubectl"
@@ -38,7 +40,7 @@ terraform {
     key = "dvir/tf.tfstate"
     region = "eu-central-1"
     dynamodb_table = "tf-state"
-    encrypt = true
+    encrypt = true 
   }
 }
 

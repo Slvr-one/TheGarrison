@@ -15,3 +15,14 @@
 #     command =  "echo \"${format("EC2 instance: %s host public IP: %s", aws_instance.ec2-master.tags.Name, aws_instance.ec2-master.public_ip)}\" "
 #   }
 # }
+
+
+# # terraform/ansible-inventory.tf
+
+# resource "local_file" "ansible_inventory" {
+#   content = templatefile("${path.module}/inventory.ini.tpl", {
+#     node_private_ips = aws_instance.k8s_node.*.private_ip
+#   })
+
+#   filename = "${path.module}/inventory.ini"
+# }

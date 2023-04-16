@@ -27,11 +27,11 @@ resource "aws_vpc_dhcp_options_association" "dns_resolver" {
   dhcp_options_id = aws_vpc_dhcp_options.dns_resolver.id
 }
 
-# Keypair:
-resource "aws_key_pair" "default_keypair" {
-  key_name   = var.keypair_name
-  public_key = var.keypair_public_key
-}
+# # Keypair:
+# resource "aws_key_pair" "default_keypair" {
+#   key_name   = var.keypair_name
+#   public_key = var.keypair_public_key
+# }
 
 # Routing:
 resource "aws_route_table" "k8s" {
