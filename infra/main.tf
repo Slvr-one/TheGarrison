@@ -17,7 +17,7 @@ module "cluster" {
   source = "./modules/cluster"
 
   amis = var.amis
-  zone = var.zone
+  az   = data.aws_availability_zones.available.names[0] #var.az
   HA   = var.HA
 
   elb_name     = var.elb_name
@@ -59,9 +59,23 @@ module "tls" {
 module "ansible" {
   source = "./modules/ansible"
 
-  HA          = var.HA
-  controllers = module.cluster.control-plane_nodes
-  workers     = module.cluster.worker_nodes
+  tags = var.tags
+  region = var.region
+  HA                           = var.HA
+  az   = data.aws_availability_zones.available.names[0] #var.az
+
+  amis = var.amis
+  keypair_name = var.keypair_name
+  ssh_private_key = module.tls.general_private_key
+
+  k8s_subnet_id       = module.network.k-subnet.id
+  control-plane_sg_id = module.network.api-sg.id
+  k8s_sg_id           = module.network.k-sg.id
+  # worker_nodes_private_ips = module.cluster.worker_nodes.*.private_ip
+  ansible_master_instance_type = var.ansible_master_instance_type
+  
+  controllers                  = module.cluster.control-plane_nodes
+  workers                      = module.cluster.worker_nodes
 }
 
 

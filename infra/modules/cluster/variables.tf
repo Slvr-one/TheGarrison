@@ -5,7 +5,7 @@ variable "region" {
   type        = string
 }
 
-variable "zone" {
+variable "az" {
   description = "availability zone"
 }
 

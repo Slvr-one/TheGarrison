@@ -25,7 +25,7 @@ resource "aws_elb" "k8s_api" {
     interval            = 30
   }
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = "kubernetes"
     }

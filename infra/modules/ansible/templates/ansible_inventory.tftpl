@@ -9,6 +9,13 @@ ${item.public_ip}
 ${item.public_ip}
 %{ endfor ~}
 
+[all:vars]
+ansible_user=${user}
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+
+
+
 [controllers:vars]
 ansible_user=${user}
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'

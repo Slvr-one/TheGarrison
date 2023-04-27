@@ -15,12 +15,12 @@ terraform {
       source  = "hashicorp/null"
       version = "3.2.1"
     }
-    
+
     tls = {
       source  = "hashicorp/tls"
       version = "4.0.4"
     }
-    
+
     # helm = {
     #   source  = "hashicorp/helm"
     #   version = "2.9.0"
@@ -36,17 +36,25 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "dvir-tf-state"
-    key = "dvir/tf.tfstate"
-    region = "eu-central-1"
+    bucket         = "dvir-tf-state"
+    key            = "dvir/tf.tfstate"
+    region         = "eu-central-1"
     dynamodb_table = "tf-state"
-    encrypt = true 
+    encrypt        = true
   }
 }
 
 provider "aws" {
   region  = var.region
   profile = var.profile #"default"
+
+#   default_tags {
+#    tags = {
+#      Environment = "Test"
+#      Owner       = "Dviross"
+#      Project     = "k8s-bootstrap"
+#    }
+#  }
 }
 
 # provider "kubernetes" {

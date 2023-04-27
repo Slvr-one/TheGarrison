@@ -3,6 +3,11 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+# # existing ecr data--
+# data "aws_ecr_repository" "bm_repo" {
+#   name = "bookmaker"
+# } 
+
 # data "external" "myipaddr" {
 #   program = ["bash", "-c", "curl -s 'https://api.ipify.org?format=json'"]
 # }
@@ -21,4 +26,18 @@ data "aws_availability_zones" "available" {
 #   }
 
 #   owners = ["099720109477"] # Canonical
+# }
+
+
+# data aws_ami latest_ubuntu_ami {
+#     most_recent = true
+#     owners = ["099720109477"]
+#     filter {
+#         name = "name"
+#         values = [""]
+#     }
+#     filter {
+#         name = "virtualization-type"
+#         values = ["hvm"]
+#     }
 # }

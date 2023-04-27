@@ -4,7 +4,7 @@ resource "aws_subnet" "k8s" {
   cidr_block        = var.vpc_cidr
   availability_zone = var.zone
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = "kubernetes"
     }
@@ -13,8 +13,8 @@ resource "aws_subnet" "k8s" {
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.k8s.id
-  
-  tags = merge(var.tags, 
+
+  tags = merge(var.tags,
     {
       Name = "kubernetes"
     }

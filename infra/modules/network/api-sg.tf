@@ -19,7 +19,7 @@ resource "aws_security_group" "k8s_api" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = "kubernetes-api"
     }

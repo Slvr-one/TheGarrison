@@ -3,7 +3,7 @@ resource "aws_vpc" "k8s" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = var.vpc_name
     }
@@ -15,7 +15,7 @@ resource "aws_vpc_dhcp_options" "dns_resolver" {
   domain_name         = "${var.region}.compute.internal"
   domain_name_servers = ["AmazonProvidedDNS"]
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = var.vpc_name
     }
@@ -37,7 +37,7 @@ resource "aws_route_table" "k8s" {
     gateway_id = aws_internet_gateway.gw.id
   }
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = "kubernetes"
     }

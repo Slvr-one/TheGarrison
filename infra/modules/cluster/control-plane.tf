@@ -12,11 +12,11 @@ resource "aws_instance" "controller" {
   associate_public_ip_address = true
   source_dest_check           = false
 
-  availability_zone      = var.zone
+  availability_zone      = var.az
   vpc_security_group_ids = [var.control-plane_sg_id, var.k8s_sg_id]
   key_name               = var.keypair_name
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name            = "controller-${count.index}"
       ansibleFilter   = var.ansibleFilter

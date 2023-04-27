@@ -9,11 +9,11 @@ resource "aws_instance" "worker" {
   associate_public_ip_address = true  # Instances have public, dynamic IP
   source_dest_check           = false # TODO Required??
 
-  availability_zone      = var.zone
+  availability_zone      = var.az
   vpc_security_group_ids = [var.k8s_sg_id]
   key_name               = var.keypair_name
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name            = "worker-${count.index}"
       ansibleFilter   = var.ansibleFilter

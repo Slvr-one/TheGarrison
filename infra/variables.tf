@@ -11,7 +11,7 @@ variable "region" {
   type        = string
 }
 
-variable "zone" {
+variable "az" {
   description = "availability zone"
 }
 
@@ -78,6 +78,10 @@ variable "keypair_public_key" {
 
 variable "ansibleFilter" {
   description = "`ansibleFilter` tag value added to all instances, to enable instance filtering in Ansible dynamic inventory"
+}
+
+variable "ansible_master_instance_type" {
+  description = "the type for ansible-master instance vm"
 }
 
 ###

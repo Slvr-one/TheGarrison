@@ -43,8 +43,16 @@ resource "aws_security_group" "k8s" {
     protocol    = "-1"
     cidr_blocks = ["${var.control_cidr}"]
   }
+  
+  # # Allow all traffic from control host IP                 !!TODO
+  # ingress {
+  #   from_port   = 0
+  #   to_port     = 0
+  #   protocol    = "-1"
+  #   cidr_blocks = ["${var.ansible_master_cidr}"]
+  # }
 
-  tags = merge(var.tags, 
+  tags = merge(var.tags,
     {
       Name = "kubernetes"
     }
