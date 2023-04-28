@@ -26,6 +26,16 @@ resource "aws_security_group" "k8s_api" {
   )
 }
 
+resource "aws_security_group_rule" "allow_ssh_from_vpc_to_api_sg" {
+ type              = "ingress"
+ description       = "Allow SSH from VPC"
+ from_port         = 22
+ to_port           = 22
+ protocol          = "tcp"
+ cidr_blocks       = [aws_vpc.k8s.cidr_block]
+ security_group_id = aws_security_group.k8s_api.id
+}
+
 # resource "aws_security_group_rule" "allow_all_myip_api" {
 #   type            = "ingress"
 #   from_port       = 0

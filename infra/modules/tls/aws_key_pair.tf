@@ -8,7 +8,7 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "null_resource" "save_key_pair_localy" {
-  
+
   triggers = {
     always_run = timestamp()
   }

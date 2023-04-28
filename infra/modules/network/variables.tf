@@ -17,6 +17,10 @@ variable "control_cidr" {
   description = "CIDR for maintenance: inbound traffic will be allowed from this IPs"
 }
 
+variable "ansible_master_cidr" {
+  description = "CIDR of ansible master to ssh from"
+}
+
 variable "vpc_name" {
   description = "Name of the VPC"
   default     = "kubernetes"

@@ -48,13 +48,13 @@ provider "aws" {
   region  = var.region
   profile = var.profile #"default"
 
-#   default_tags {
-#    tags = {
-#      Environment = "Test"
-#      Owner       = "Dviross"
-#      Project     = "k8s-bootstrap"
-#    }
-#  }
+  #   default_tags {
+  #    tags = {
+  #      Environment = "Test"
+  #      Owner       = "Dviross"
+  #      Project     = "k8s-bootstrap"
+  #    }
+  #  }
 }
 
 # provider "kubernetes" {
