@@ -4,6 +4,15 @@ set -euo pipefail
 user="ubuntu"
 private_key_file="~/.ssh/kp-one.pem"
 inventory="modules/ansible/inventory.ini"
+
+[
+sudo chmod 777 '${path.module}/ansible_config/inventory.ini'
+sudo cp '${path.module}/ansible_config/ansible.cfg' /etc/ansible/ansible.cfg
+# echo ${var.ssh_private_key} > ${local.private_ssh_key}
+ansible-playbook -i '${path.module}/ansible_config/inventory.ini' '${path.module}/ansible_config/install_kubernetes.yaml' --user ${local.ssh_user} # --key-file ${local.private_ssh_key}
+]
+
+
 pushd infra/
 
 # ansible -i $inventory -m ping all --user $user --key-file $private_key_file

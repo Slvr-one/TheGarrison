@@ -12,6 +12,17 @@ data "aws_availability_zones" "available" {
 #   program = ["bash", "-c", "curl -s 'https://api.ipify.org?format=json'"]
 # }
 
+
+# data "aws_ami" "al2_latest" {
+#   owners      = ["amazon"]
+#   most_recent = true
+
+#   filter {
+#     name   = "name"
+#     values = ["amzn2-ami-hvm-*-x86_64-ebs"]
+#   }
+# }
+
 # data "aws_ami" "ubuntu" {
 #   most_recent = true
 

@@ -1,8 +1,9 @@
 
 # cluster - sg:
 resource "aws_security_group" "k8s" {
+  name   = "k8s"  
   vpc_id = aws_vpc.k8s.id
-  name   = "k8s"
+  description = "access to workers vms"
 
   # Allow all outbound
   egress {
@@ -59,15 +60,15 @@ resource "aws_security_group" "k8s" {
   )
 }
 
-resource "aws_security_group_rule" "allow_ssh_from_vpc_to_gen_sg" {
- type              = "ingress"
- description       = "Allow SSH from VPC"
- from_port         = 22
- to_port           = 22
- protocol          = "tcp"
- cidr_blocks       = [aws_vpc.k8s.cidr_block]
- security_group_id = aws_security_group.k8s.id
-}
+# resource "aws_security_group_rule" "allow_ssh_from_vpc_to_gen_sg" {
+#  type              = "ingress"
+#  description       = "Allow SSH from VPC"
+#  from_port         = 22
+#  to_port           = 22
+#  protocol          = "tcp"
+#  cidr_blocks       = ["0.0.0.0/0"] #[aws_vpc.k8s.cidr_block]
+#  security_group_id = aws_security_group.k8s.id
+# }
 
 # resource "aws_security_group_rule" "allow_all_myip_k8s" {
 #   type            = "ingress"
