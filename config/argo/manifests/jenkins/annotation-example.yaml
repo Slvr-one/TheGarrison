@@ -1,0 +1,54 @@
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  annotations:
+    buildUrl: "http://jenkins-1632774650.default.svc.cluster.local:8080/job/testjobs/job/default-agent/12/"
+    runUrl: "job/testjobs/job/default-agent/12/"
+  labels:
+    purpose: "jenkins-agent"
+    jenkins/jenkins-1632774650-jenkins-agent: "true"
+    jenkins/label-digest: "f1e72b5350a98da18dd1a3d9055a3c1f34abbec8"
+    jenkins/label: "testjobs_default-agent_12-n95l2"
+  name: "testjobs-default-agent-12-n95l2-3dff8-1fdv7"
+spec:
+  containers:
+  - command:
+    - "cat"
+    image: "postgres:latest"
+    name: "postgres"
+    tty: true
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "jenkins-1632774650-agent.default.svc.cluster.local:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "testjobs-default-agent-12-n95l2-3dff8-1fdv7"
+    - name: "JENKINS_NAME"
+      value: "testjobs-default-agent-12-n95l2-3dff8-1fdv7"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://jenkins-1632774650.default.svc.cluster.local:8080/"
+    image: "jenkins/inbound-agent:4.3-4"
+    name: "jnlp"
+    resources:
+      limits: {}
+      requests:
+        memory: "256Mi"
+        cpu: "100m"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  nodeSelector:
+    kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  volumes:
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"

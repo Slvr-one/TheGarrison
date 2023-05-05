@@ -93,3 +93,13 @@ module "ansible" {
 #     }
 #   }
 # }
+
+# deploy argocd helm chart in cluster
+# module "helm" {
+#   source     = "./modules/helm"
+#   node_group = module.eks.main_node_group #public_node_group
+
+#   depends_on = [
+#     module.vpc_for_eks
+#   ]
+# }

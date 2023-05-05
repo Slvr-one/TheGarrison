@@ -1,0 +1,70 @@
+server:
+   ## Server service configuration
+  service:
+    # -- Server service annotations
+    annotations: {}
+    # -- Server service labels
+    labels: {}
+    # -- Server service type
+    type: ClusterIP
+  # ingress:
+  #   enabled: yes
+  #   annotations:
+  #     kubernetes.io/ingress.class: nginx #get nginx controller - helm
+
+# configs:
+#   # params:
+#   #   server.insecure: yes
+#   secret:
+#     createSecret: true
+#     # argocdServerAdminPassword: ""
+#     hosts:
+#       - argo 
+#     paths:
+#       - /
+#     # -- Annotations to be added to argocd-secret
+#     annotations: {}
+
+#     # -- Shared secret for authenticating GitHub webhook events
+#     githubSecret: ""
+#     # -- Shared secret for authenticating GitLab webhook events
+#     gitlabSecret: ""
+#     # -- Shared secret for authenticating BitbucketServer webhook events
+#     bitbucketServerSecret: ""
+#     # -- UUID for authenticating Bitbucket webhook events
+#     bitbucketUUID: ""
+#     # -- Shared secret for authenticating Gogs webhook events
+#     gogsSecret: ""
+
+#     # -- add additional secrets to be added to argocd-secret
+#     ## Custom secrets. Useful for injecting SSO secrets into environment variables.
+#     ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
+#     ## Note that all values must be non-empty.
+#     extra:
+#       {}
+#       # LDAP_PASSWORD: "mypassword"
+
+#     # -- Argo TLS Data
+#     # DEPRECATED - Use server.certificate or server.certificateSecret
+#     # argocdServerTlsConfig:
+#     #  key: ''
+#     #  crt: ''
+
+#     # -- Bcrypt hashed admin password
+#     ## Argo expects the password in the secret to be bcrypt hashed. You can create this hash with
+#     ## `htpasswd -nbBC 10 "" $ARGO_PWD | tr -d ':\n' | sed 's/$2y/$2a/'`
+#     argocdServerAdminPassword: ""
+#     # -- Admin password modification time. Eg. `"2006-01-02T15:04:05Z"`
+#     # @default -- `""` (defaults to current time)
+#     argocdServerAdminPasswordMtime: ""
+  
+
+
+## Custom resource configuration
+crds:
+  # -- Install and upgrade CRDs
+  install: true
+  # -- Keep CRDs on chart uninstall
+  keep: false
+  # -- Annotations to be added to all CRDs
+  annotations: {}
