@@ -1,9 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-
 # Install the OS dependencies:
-
 {
   sudo apt-get update
   sudo apt-get -y install socat conntrack ipset
