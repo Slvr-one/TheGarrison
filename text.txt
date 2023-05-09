@@ -1,0 +1,70 @@
+
+Key Kubernetes cluster configurations every DevOps engineer should know - 
+Collaborating with security teams for architecture approval and compliance requirements -
+Comprehensive understanding of cluster configuration files and their locations 
+
+Kubernetes components use Mutual TLS for communication - 
+TLs certificates and private keys are stored in HC/kubernetes folder - 
+Control plane and worker nodes use the same certificates for authentication
+
+Managed Kubernetes clusters handle TLS requirements - 
+Providers manage control plane components and TLS certificates - 
+Self-hosted clusters require requesting certificates from organization's network or security team 
+
+Understanding HCD and Kubernetes API authentication - 
+Manifest file contains HCD configurations and service endpoint details - 
+Cubeconfig file is necessary for authentication to Kubernetes API server 
+
+Understanding the cubeconfig file and its usage in Kubernetes - 
+Cubeconfig file is used by end-users to access the API server to manage clusters - 
+Cubeconfig file is also used by respective components for API server authentication and authorization 
+
+Understanding the cubelet service file - 
+The cubelet service file contains three important configurations: 
+the cubeconfig file, the cubelet config.yaml file, and the manifest location. - 
+The cubelet EnV file contains the container runtime environment Linux socket and the pod infra container parameter. 
+
+Kubernetes DNS handles internal and external queries - 
+DNS queries are handled by the core DNS add-on component - 
+Configurations for core DNS are stored in a config map named core DNS in the cube system namespace 
+
+Custom DNS servers can be added to core DNS config map - 
+Internal Kubernetes DNS queries are forwarded to HC/resolve.com - 
+Other important cluster configurations include audit logging, RBAC, and container image security
+
+-----------------------------------------------------------------------
+
+Disable Secure Boot in UEFI:
+Secure Boot is a security feature that prevents unauthorized software from running during the startup process. This feature can sometimes interfere with the proper functioning of graphics card drivers, especially if they are not signed by Microsoft. Disabling Secure Boot allows your system to boot with unsigned drivers, potentially resolving issues with your Nvidia graphics card.
+
+a. To disable Secure Boot, restart your computer and press the designated key to enter the UEFI/BIOS settings. This key varies depending on your device's manufacturer, but it is usually F2, F10, or DEL. Look for a prompt on the screen or check your computer's documentation for the specific key.
+
+b. Once you have accessed the UEFI/BIOS settings, navigate to the "Boot" or "Security" tab.
+
+c. Locate the "Secure Boot" option and change its status to "Disabled."
+
+d. Save your changes and exit the UEFI/BIOS settings. Your computer will restart and proceed to boot up normally.
+
+Install the recommended Nvidia drivers:
+Installing the recommended Nvidia drivers ensures that your graphics card has the most up-to-date and stable drivers available. This can help resolve any compatibility or performance issues you may be experiencing.
+
+a. In your operating system, open the "Software & Updates" application.
+
+b. Click on the "Additional Drivers" tab, which displays a list of available drivers for your system's hardware components.
+
+c. Among the drivers listed, select the recommended Nvidia driver. This driver is typically marked as "tested" or "proprietary," indicating that it has been tested for compatibility and stability with your system.
+
+d. Click "Apply Changes" to begin the driver installation process. This may take a few minutes to complete.
+
+e. Once the installation is finished, restart your computer to ensure the new driver is properly loaded and active.
+
+Update your UEFI (optional, but highly recommended):
+UEFI (Unified Extensible Firmware Interface) is a modern replacement for BIOS and is responsible for the initial startup and hardware configuration of your computer. Updating your UEFI can resolve compatibility issues with your graphics card and improve the overall stability and performance of your system.
+
+a. To update your UEFI, first visit your motherboard manufacturer's website and search for your specific motherboard model. The UEFI/BIOS update should be available on the product support or downloads page.
+
+b. Download the latest UEFI update and carefully follow the instructions provided by the manufacturer. The update process may vary depending on your motherboard, so it is crucial to read and follow the instructions precisely to avoid any potential issues.
+
+c. After the UEFI update is complete, restart your computer to ensure the new firmware is active.
+
+By following these steps, you can resolve any issues you may be experiencing with your Nvidia graphics card and improve the overall performance and stability of your system.

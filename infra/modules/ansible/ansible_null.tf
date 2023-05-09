@@ -89,12 +89,11 @@ resource "null_resource" "ansible_run" {
     null_resource.ansible_setup
   ]
 
-
-  provisioner "local-exec" { # cp ansible.cfg to its default location
-    command = "sudo cp '${path.module}/ansible_config/ansible.cfg' /etc/ansible/ansible.cfg"
-      # "sudo chmod 777 '${path.module}/ansible_config/inventory.ini'",
-      #   "echo ${var.ssh_private_key} > ${local.private_ssh_key}",
-  }
+  # provisioner "local-exec" { # cp ansible.cfg to its default location
+  #   command = "sudo cp '${path.module}/ansible_config/ansible.cfg' /etc/ansible/ansible.cfg"
+  #     # "sudo chmod 777 '${path.module}/ansible_config/inventory.ini'",
+  #     #   "echo ${var.ssh_private_key} > ${local.private_ssh_key}",
+  # }
 
   provisioner "local-exec" { # run ansible playbook
     command = "ansible-playbook -i '${path.module}/ansible_config/inventory.ini' '${path.module}/ansible_config/install_kubernetes.yaml' --user ${local.ssh_user} --key-file ${local.private_ssh_key}"

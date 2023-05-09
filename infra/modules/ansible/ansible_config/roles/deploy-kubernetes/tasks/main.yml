@@ -1,7 +1,7 @@
--
+
 # tasks file for deploy-kubernetes
 - name: Initializing the kubernetes cluster on the master node...
-  become: yes
+  become: true
   shell: kubeadm init --pod-network-cidr=10.244.0.0/16
 
 - name: Creating .kube directory
@@ -11,11 +11,11 @@
     mode: 0755
 
 - name: Configuring users cluster access
-  become: yes
+  become: true
   copy:
     src: /etc/kubernetes/admin.conf
     dest: /home/ansible/.kube/config
-    remote_src: yes
+    remote_src: true
     owner: ansible
  
 - name: Installing Pod network.... (Flannel)
