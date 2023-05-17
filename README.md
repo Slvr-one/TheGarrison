@@ -1,5 +1,5 @@
-<!-- # <center>Welcome to my portfolio! 👋</center> -->
-# <p style="text-align:center">Welcome to my portfolio! 👋</p>
+# <center>Welcome to my portfolio! 👋</center>
+<!-- # <p style="text-align:center">Welcome to my portfolio! 👋</p> -->
 
 ## project [B∞kmaker]
 
