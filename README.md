@@ -1,56 +1,93 @@
 # Welcome to my portfolio! 👋
 
-# project [B∞kmaker]
+## project [B∞kmaker]
 
 * Hello there! 
-* This is my portfolio git repository where you can browse through a custom app i build from scratch in golang while self learning the inner working of this amaizing coding experience of a language.
+* This is my portfolio git repository where you can browse through a custom app i build from scratch in golang,
+while self learning the inner working of this amaizing coding experience of a language.
 * Feel free to explore and connect with me!
 
 ## Table of Contents
 
-In this repo, you will find three markdown files that showcase my skills and experience. The first file, `about.md`, provides more information about me and my background. The second file, `projects.md`, lists some of my recent projects. The third file, `tech.md`, outlines my tech stack.
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
 
-1. [Skills.md](./Skills.md) - A comprehensive list of my technical skills and expertise.
-2. [Experience.md](./Experience.md) - My professional experiences, internships, and projects I've worked on.
-3. [Projects.md](./Projects.md) - A showcase of some of the cool projects I've built and contributed to.
+* [Prerequisites](#prerequisites)
+* [Getting Started](#getting-started)
+* [Roadmap](#roadmap)
 
-## About Me
 
-I'm an enthusiastic and passionate Junior DevOps Engineer with a strong foundation in Linux, cloud technologies, and automation. I'm always eager to learn new technologies and methodologies to improve my skills and deliver high-quality solutions.
+## about-the-project
 
-## My Tech Stack
 
-As a DevOps engineer, I'm proficient in a wide range of technologies, tools, and frameworks. Here are some:
 
-- Cloud Platforms: AWS, GCP, Digital Ocean
-- Containerization: Docker; compose, Kubernetes
-- CI/CD: Jenkins, Argo, Github Workflows
-- Infrastructure as Code: Terraform, Ansible, CloudFormation
-- Programming Languages: Bash, Golang, Python
-- Version Control: Git
+## built-with
+* App
+  * [Golang](https://golang.org/)
+  * [Gin](https://github.com/gin-gonic/gin)
+  <!-- * [Gorm](https://gorm.io/) -->
+  <!-- * [JWT](https://jwt.io/) -->
+* Infra
+  * [Docker](https://www.docker.com/)
+  * [Docker Compose](https://docs.docker.com/compose/)
+  * [Kubernetes](https://kubernetes.io/)
+  * [Helm](https://helm.sh/)
+  * [Prometheus](https://prometheus.io/)
+  * [Grafana](https://grafana.com/)
+  * [Jenkins](https://www.jenkins.io/)
+  * [ArgoCD](https://argoproj.github.io/argo-cd/)
+  <!-- * [ArgoCD Image Updater](https://github.com/argoproj-labs/argocd-image-updater) -->
+  <!-- * [ArgoCD Notifications](https://argoproj-labs.github.io/argocd-notifications/) -->
+* Config
+  * [Kustomize](https://kustomize.io/)
+  * [Helmfile](https://github.com/roboll/helmfile)
+  * [Helm Charts](https://helm.sh/)
+    
+## prerequisites
+<!-- TODO -->
+* A computer running Windows, macOS, or Linux
+* Familiarity with basic software development concepts (e.g., version control, build tools, testing)
+* Familiarity with basic operations concepts (e.g., infrastructure provisioning, cloud computing, container orchistration )
+* Basic understanding of YAML syntax [replace values for your environment]
+* Familiarity with the command line interface (CLI)
+* Familiarity with basic Kubernetes concepts (e.g., pods, deployments, services)
+* Access to the servers or machines you will be managing with Ansible
+* Access to a Jenkins server (either locally or remotely)
+* Access to a Docker installation on your local machine
+<!-- * Familiarity with basic Jenkins concepts (e.g., pipelines, jobs, agents) -->
+<!-- * Basic understanding of programming concepts (e.g., variables, functions, control flow) -->
+<!-- * Access to a Kubernetes cluster (e.g., Minikube, GKE, EKS) -->
+<!-- - Familiarity with golang syntax and concepts -->
+<!-- - Basic understanding of object-oriented programming -->
 
-Feel free to explore this repository to learn more about my experiences, skill sets, and projects. If you have any questions or would like to connect, don't hesitate to reach out.
+## getting-started
+<!-- TODO -->
+To get started with this project, follow these steps:
+1. deploy infra:
+2. config infra:
+3. Clone the repository: `git clone https://github.com/Slvr-one/bookmaker.git`
+4. build sources into an image: `./scripts/dockerize.sh`
+5. release the image to a private repo: `./scripts/release.sh`
 
-I am proficient in the following technologies:
+## roadmap
+<!-- TODO -->
+### Short-term goals
+- Implement user authentication
+- Add support for static file serving
+- Improve error handling & logging into elk
 
-* Kubernetes
-* Docker
-* AWS
-* Terraform
-
-I am also familiar with the following technologies:
-
-* Ansible
-* Chef
-* Puppet
+### Long-term goals
+- Integrate with third-party APIs
+- Implement a recommendation engine
+- Scale the application to handle high traffic
 
 ## Contact
-
-If you have any questions or would like to learn more about my work, please feel free to contact me at [email protected]
+If you have any questions or would like to learn more about my work, don't hesitate to reach out:
 
 - 🌐 Connect with me on [LinkedIn](https://www.linkedin.com/in/dvir-gross-929252224/)
 - ✉️ Reach out to me at [dviross@outlook.com](mailto:dviross@outlook.com)
 - 🌟 Check out my [GitHub Profile README](https://github.com/Slvr-one/Slvr-one/blob/main/README.md)
+
 
 ---
 This repository is maintained by [Dvir Gross](https://github.com/Slvr-one). 
