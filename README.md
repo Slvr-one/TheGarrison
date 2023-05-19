@@ -83,12 +83,13 @@ while self learning the inner working of this amaizing coding experience of a la
 To get started with this project, follow these steps:
 1. deploy infra:
 2. config infra:
-3. Clone the repository: `git clone https://github.com/Slvr-one/bookmaker.git bm && cd bm`
-
+3. Clone the repository: 
+> `git clone https://github.com/Slvr-one/bookmaker.git bm && cd bm`
 <details>
-<summary>!</summary>
-[make sure to set vars in script to fit yourself]
+<summary>note!</summary>
+[make sure to set vars in the scripts to fit yourself]
 </details>
+
 4. build sources into an image: `./scripts/dockerize.sh`
 5. release the image to a private repo: `./scripts/release.sh` 
 
