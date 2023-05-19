@@ -1,7 +1,9 @@
-# Welcome to my portfolio!
-<!-- # <p style="text-align:center">Welcome to my portfolio! 👋</p> -->
+<div align="center">
+# Welcome to my portfolio! 👋
 
-## project [B∞kmaker]
+## project 📖 [B∞kmaker]
+
+</div>
 
 * Hello there! 
 * This is my portfolio git repository where you can browse through a custom app i build from scratch in golang,
