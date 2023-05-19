@@ -10,8 +10,6 @@
 * This is my portfolio git repository where you can browse through a custom app i build from scratch in golang,
 while self learning the inner working of this amaizing coding experience of a language.
 
-* This is a simple app that allows you to create a new horse / investment(gamble on a horse) and save it to a database.
-
 ## Table of Contents
 
 * [About the Project](#about-the-project)
@@ -23,8 +21,9 @@ while self learning the inner working of this amaizing coding experience of a la
 
 
 ## about-the-project
-Bookmaker app for light gambling and API connection on several paths, built with golang.
-For more details about the app, check the [App repo][bmrepo]
+* This is a simple app that allows you to create a new horse / investment (gamble on a horse) and save it to a database.
+* Bookmaker app for light gambling and API connection on several paths, built with golang.
+* For more details about the app, check the [App repo][bmrepo]
 
 
 
@@ -124,6 +123,6 @@ This repository is maintained by [Dvir Gross](https://github.com/Slvr-one).
 [jenkins]: https://www.jenkins.io/
 [argocd]: https://argoproj.github.io/argo-cd/
 [kusto]: https://kustomize.io/
-[helmf]: https://github.com/roboll/helmfile
+[helmf]: https://helmfile.readthedocs.io/en/latest/
 
 [bmrepo]: https://github.com/Slvr-one/bookmaker
