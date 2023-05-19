@@ -2,7 +2,7 @@
 
 # Welcome to my portfolio! 👋
 
-## project 📖 [B∞kmaker]
+## [ Project B∞kmaker ] 📖
 
 </div>
 
@@ -23,31 +23,36 @@ while self learning the inner working of this amaizing coding experience of a la
 
 
 ## about-the-project
+Bookmaker app for light gambling and API connection on several paths, built with golang.
+For more details about the app, check the [App repo][bmrepo]
 
 
 
 ## built-with
 * App
-  * [Golang](https://golang.org/)
-  * [Gin](https://github.com/gin-gonic/gin)
-  * [Mongo](https://github.com/mongodb/mongo-go-driver)
+  * [Golang][go]
+  * [Gin][gin]
+  * [Mongo][mongo-go-d]
   <!-- * [Gorm](https://gorm.io/) -->
   <!-- * [JWT](https://jwt.io/) -->
-* Infra
-  * [Docker](https://www.docker.com/)
-  * [Docker Compose](https://docs.docker.com/compose/)
-  * [Kubernetes](https://kubernetes.io/)
-  * [Helm](https://helm.sh/)
-  * [Prometheus](https://prometheus.io/)
-  * [Grafana](https://grafana.com/)
-  * [Jenkins](https://www.jenkins.io/)
-  * [ArgoCD](https://argoproj.github.io/argo-cd/)
+* Infra 
+  * Virtualization: 
+    * [Docker][docker]
+    * [Docker Compose][docker-compose]
+    * [Kubernetes][k8s]
+  * Observability:
+    * [Prometheus][prome]
+    * [Grafana][grafana]
+  * CI/CD:
+    * [Jenkins][jenkins]
+    * [ArgoCD][argocd]
   <!-- * [ArgoCD Image Updater](https://github.com/argoproj-labs/argocd-image-updater) -->
   <!-- * [ArgoCD Notifications](https://argoproj-labs.github.io/argocd-notifications/) -->
 * Config
-  * [Kustomize](https://kustomize.io/)
-  * [Helmfile](https://github.com/roboll/helmfile)
-  * [Helm Charts](https://helm.sh/)
+  * [Kustomize][kusto]
+  * [Helm][helm]
+  * [Helmfile][helmf]
+
     
 ## prerequisites
 <!-- TODO -->
@@ -77,15 +82,23 @@ To get started with this project, follow these steps:
 
 ## roadmap
 <!-- TODO -->
-### Short-term goals
+<details>
+<summary>Short-term goals</summary>
+
 - Implement user authentication
 - Add support for static file serving
 - Improve error handling & logging into elk
 
-### Long-term goals
+</details>
+
+<details>
+<summary>Long-term goals</summary>
+
 - Integrate with third-party APIs
 - Implement a recommendation engine
 - Scale the application to handle high traffic
+
+</details>
 
 ## Contact
 If you have any questions or would like to learn more about my work, don't hesitate to reach out:
@@ -97,3 +110,20 @@ If you have any questions or would like to learn more about my work, don't hesit
 
 ---
 This repository is maintained by [Dvir Gross](https://github.com/Slvr-one). 
+
+[go]: https://golang.org/
+[gin]: https://github.com/gin-gonic/gin
+[mongo-go-d]: https://github.com/mongodb/mongo-go-driver
+
+[docker]: https://www.docker.com/
+[docker-compose]: https://docs.docker.com/compose/
+[k8s]: https://kubernetes.io/
+[helm]: https://helm.sh/
+[prome]: https://prometheus.io/
+[grafana]: https://grafana.com/
+[jenkins]: https://www.jenkins.io/
+[argocd]: https://argoproj.github.io/argo-cd/
+[kusto]: https://kustomize.io/
+[helmf]: https://github.com/roboll/helmfile
+
+[bmrepo]: https://github.com/Slvr-one/bookmaker
