@@ -1,4 +1,4 @@
-<center># Welcome to my portfolio! 👋</center>
+# Welcome to my portfolio!
 <!-- # <p style="text-align:center">Welcome to my portfolio! 👋</p> -->
 
 ## project [B∞kmaker]
@@ -6,7 +6,8 @@
 * Hello there! 
 * This is my portfolio git repository where you can browse through a custom app i build from scratch in golang,
 while self learning the inner working of this amaizing coding experience of a language.
-* Feel free to explore and connect with me!
+
+* This is a simple app that allows you to create a new horse / investment(gamble on a horse) and save it to a database.
 
 ## Table of Contents
 
@@ -26,6 +27,7 @@ while self learning the inner working of this amaizing coding experience of a la
 * App
   * [Golang](https://golang.org/)
   * [Gin](https://github.com/gin-gonic/gin)
+  * [Mongo](https://github.com/mongodb/mongo-go-driver)
   <!-- * [Gorm](https://gorm.io/) -->
   <!-- * [JWT](https://jwt.io/) -->
 * Infra

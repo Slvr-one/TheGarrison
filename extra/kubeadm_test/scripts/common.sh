@@ -69,6 +69,8 @@ sudo apt-get install -y kubelet="$KUBERNETES_VERSION" kubectl="$KUBERNETES_VERSI
 sudo apt-get update -y
 sudo apt-get install -y jq
 
+# Gets the local IP address of the machine's eth1 interface. & assign local_ip variable.
+# Writes to /etc/default/kubelet file, setting the KUBELET_EXTRA_ARGS environment variable to include the --node-ip flag with the local_ip value, used to configure a k8s node's IP address.
 local_ip="$(ip --json a s | jq -r '.[] | if .ifname == "eth1" then .addr_info[] | if .family == "inet" then .local else empty end else empty end')"
 cat > /etc/default/kubelet << EOF
 KUBELET_EXTRA_ARGS=--node-ip=$local_ip
