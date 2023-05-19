@@ -30,27 +30,27 @@ while self learning the inner working of this amaizing coding experience of a la
 ## built-with
 * App
   * [Golang][go]
-  * [Gin][gin]
-  * [Mongo][mongo-go-d]
+  * [Gin][gin] - A web framework for Golang
+  * [Kratos][kratos]
   <!-- * [Gorm](https://gorm.io/) -->
   <!-- * [JWT](https://jwt.io/) -->
 * Infra 
-  * Virtualization: 
-    * [Docker][docker]
-    * [Docker Compose][docker-compose]
-    * [Kubernetes][k8s]
-  * Observability:
-    * [Prometheus][prome]
-    * [Grafana][grafana]
-  * CI/CD:
-    * [Jenkins][jenkins]
-    * [ArgoCD][argocd]
+  * [Mongo][mongo-go-d] A NoSQL database
+  * [Docker][docker]
+  * [Docker Compose][docker-compose]
+  * [Kubernetes][k8s]
+* Observability:
+  * [Prometheus][prome] - monitoring
+  * [Grafana][grafana] - Visualization for Prometheus data
+* CI/CD:
+  * [Jenkins][jenkins] - CI server & pipeline
+  * [ArgoCD][argocd] - CD for k8s
   <!-- * [ArgoCD Image Updater](https://github.com/argoproj-labs/argocd-image-updater) -->
   <!-- * [ArgoCD Notifications](https://argoproj-labs.github.io/argocd-notifications/) -->
 * Config
-  * [Kustomize][kusto]
-  * [Helm][helm]
-  * [Helmfile][helmf]
+  * [Kustomize][kusto] - customizing Kubernetes configurations
+  * [Helm][helm] - k8s package manager
+  * [Helmfile][helmf] - Helm charts Config manager
 
     
 ## prerequisites
@@ -112,6 +112,7 @@ This repository is maintained by [Dvir Gross](https://github.com/Slvr-one).
 
 [go]: https://golang.org/
 [gin]: https://github.com/gin-gonic/gin
+[kratos]: github.com/go-kratos/kratos/v2
 [mongo-go-d]: https://github.com/mongodb/mongo-go-driver
 
 [docker]: https://www.docker.com/

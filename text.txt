@@ -119,4 +119,3 @@ I possess .
 Proficiency in cloud platforms like AWS, Azure, and GCP 
 as well as experience in CM tools such as Terraform, Ansible, and Jenkins. 
 I've also worked on containerization technologies like Docker and Kubernetes.  
-
