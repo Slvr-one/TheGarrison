@@ -4,11 +4,11 @@ set -eux
 # //////////////  VARS  //////////////////////////////////////
 
 name="local_dev"
-region="eu-central-1"
+region=`aws configure get region`
 aws_account_id="514095112279"
 
 release="dvir"
-infra-repo="git@github.com:Slvr-one/porfolio-config.git"
+# infra-repo="git@github.com:Slvr-one/porfolio-config.git"
 
 echo "cluster name will be $name"
 

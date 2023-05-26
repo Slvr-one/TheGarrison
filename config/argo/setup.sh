@@ -3,20 +3,19 @@ set -eu
 
 #argo cofigs:
 
+# kubectl create namespace argocd
 
 # #apply argo crds - currenty done with tf helm provider
-# k -n argocd apply -f manifests/argo/crds.yaml
-# #or
-# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 # #or
 # curl https://raw.githubusercontent.com/argoproj/argo-helm/master/charts/argo-cd/crds/crd-applicationset.yaml | kubectl apply -f -
 
 #apply infra-repo & private key for argo auth on app of apps
-k apply -f manifests/argo/infra-repo.yaml 
+kubectl apply -f ./manifests/argo/infra-repo.yaml 
 # argocd repo add $infra-repo --insecure-ignore-host-key --ssh-private-key-path ~/.ssh/id_rsa_git_main
 
 #apply app of apps
-k apply -f manifests/argo/app-of-apps.yaml
+kubectl apply -f ./manifests/argo/app-of-apps.yaml
 
 ###
 

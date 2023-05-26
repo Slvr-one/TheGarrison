@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: config-repo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: git@github.com:Slvr-one/k8s-dev
+  sshPrivateKey: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    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
+    -----END OPENSSH PRIVATE KEY-----
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: infra-repo-creds
+#   namespace: argocd
+#   labels:
+#     argocd.argoproj.io/secret-type: repo-creds
+# stringData:
+#   type: git
+#   url: https://github.com/argoproj
+#   password: my-password
+#   username: my-username
