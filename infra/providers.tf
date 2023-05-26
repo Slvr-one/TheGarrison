@@ -1,6 +1,5 @@
 
 
-# https://www.terraform.io/language/settings/backends/gcs
 terraform {
   required_providers {
     google = {
