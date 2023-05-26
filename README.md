@@ -7,8 +7,7 @@
 </div>
 
 * Hello there! 
-* This is my portfolio git repository where you can browse through a custom app i build from scratch in golang,
-while self learning the inner working of this amaizing coding experience of a language.
+* This is my portfolio git repository where you can browse through the infrastructure of underling virtualization, provisioned for local / cloude computing and clustering, by Terraform, Ansible, Kubeadm tools & more.
 
 ## Table of Contents:
 
@@ -58,6 +57,7 @@ while self learning the inner working of this amaizing coding experience of a la
 * Config
   <!-- * [Kustomize][kusto] - Customizing k8s configurations -->
   * [Helm][helm] - k8s package manager
+  * [Ansible][ansible] - Configuration management tool
   <!-- * [Helmfile][helmf] - Helm charts Config manager -->
 
     
@@ -93,8 +93,15 @@ To get started with this project, follow these steps:
 4. build sources into an image: `./scripts/dockerize.sh`
 5. release the image to a private repo: `./scripts/release.sh` 
 
-## roadmap #
+## roadmap 
 <!-- TODO -->
+<details>
+<summary>Short-term goals</summary>
+
+- Implement user authentication
+- Add support for static file serving
+- Improve error handling & logging into elk
+</details>
 
 <details>
 <summary>Long-term goals</summary>
@@ -102,15 +109,14 @@ To get started with this project, follow these steps:
 - Integrate with third-party APIs
 - Implement a recommendation engine
 - Scale the application to handle high traffic
-
 </details>
 
 ## Contact:
 If you have any questions or would like to learn more about my work, don't hesitate to reach out:
 
-- 🌐 Connect with me on [LinkedIn](https://www.linkedin.com/in/dvir-gross-929252224/)
+- 🌐 Connect with me on [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dvir-gross-929252224/)
 - ✉️ Reach out to me at [dviross@outlook.com](mailto:dviross@outlook.com)
-- 🌟 Check out my [GitHub Profile README](https://github.com/Slvr-one/Slvr-one/blob/main/README.md)
+- 🌟 More [About Me](https://github.com/Slvr-one/Slvr-one/blob/main/README.md)
 
 
 ---
@@ -146,6 +152,7 @@ This repository is maintained by [Dvir Gross](https://github.com/Slvr-one).
 
 [kusto]: https://kustomize.io/
 [helm]: https://helm.sh/
+[ansible]: https://www.ansible.com/
 [helmf]: https://helmfile.readthedocs.io/en/latest/
-
+ 
 [bmrepo]: https://github.com/Slvr-one/bookmaker
