@@ -6,9 +6,7 @@ set -eu
 # kubectl create namespace argocd
 
 # #apply argo crds - currenty done with tf helm provider
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-# #or
-# curl https://raw.githubusercontent.com/argoproj/argo-helm/master/charts/argo-cd/crds/crd-applicationset.yaml | kubectl apply -f -
+# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 #apply infra-repo & private key for argo auth on app of apps
 kubectl apply -f ./manifests/argo/infra-repo.yaml 
