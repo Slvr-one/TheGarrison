@@ -35,7 +35,7 @@
   <!-- * [JWT](https://jwt.io/) -->
 * Infra 
   * [Mongo][mongo-go-d] - A NoSQL database
-  * [Docker][docker]
+  * [Docker][docker] - container runtime
   * [Docker Compose][docker-compose]
   * [Kubernetes][k8s]
 * Observability:
@@ -47,7 +47,7 @@
   * [letsencrypt][letsencrypt] - A free, automated, and open Certificate Authority.
   <!-- * [Traefik][traefik] - A modern HTTP reverse proxy and load balancer made to deploy microservices with ease. -->
   <!-- * [Keycloak][keycloak] - A modern identity and access management solution. -->
-  <!-- * [external Secrets][x-secret] -->
+  * [external Secrets][x-secret] - an external secret operator for better handling secret.
 
 * CI/CD:
   * [Jenkins][jenkins] - CI server & pipeline
@@ -57,8 +57,8 @@
 * Config
   <!-- * [Kustomize][kusto] - Customizing k8s configurations -->
   * [Helm][helm] - k8s package manager
-  * [Ansible][ansible] - Configuration management tool
-  <!-- * [Helmfile][helmf] - Helm charts Config manager -->
+  <!-- * [Ansible][ansible] - Configuration management tool -->
+  * [Helmfile][helmf] - Helm charts Config manager
 
     
 ## prerequisites:
@@ -81,17 +81,19 @@
 ## getting-started -> 
 <!-- TODO -->
 To get started with this project, follow these steps:
-1. deploy infra:
-2. config infra:
-3. Clone the repository: 
+1. Clone this repo: 
+> `git clone https://github.com/Slvr-one/TheGarrison.git infra && cd infra`
+2. deploy infra:
+3. config infra:
+4. Clone the [app repo][bmrepo]: 
 > `git clone https://github.com/Slvr-one/bookmaker.git bm && cd bm`
 <details>
 <summary>note!</summary>
 [make sure to set vars in the scripts to fit yourself]
 </details>
 
-4. build sources into an image: `./scripts/dockerize.sh`
-5. release the image to a private repo: `./scripts/release.sh` 
+5. build sources into an image: `./scripts/dockerize.sh`
+6. release the image to a private repo: `./scripts/release.sh` 
 
 ## roadmap 
 <!-- TODO -->
