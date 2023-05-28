@@ -6,14 +6,14 @@ metadata:
     {{- include "BM.labels" . | nindent 4 }}
     app: bookmaker
 spec:
-  {{- if not .Values.Ingress.Enabled }}
+  {{- if not .Values.ingress.enabled }}
   type: LoadBalancer
   {{- end }}
   sessionAffinity: None
   ports:
-  - port: {{ .Values.Services.app.servicePort }}
+  - port: {{ .Values.services.app.servicePort }}
     # name: web
-    targetPort: {{ .Values.Services.app.targetPort }}
+    targetPort: {{ .Values.services.app.targetPort }}
   selector:
     {{- include "BM.selectorLabels" . | nindent 4 }}
   

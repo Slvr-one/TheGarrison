@@ -10,9 +10,8 @@ aws_account_id="514095112279"
 release="dvir"
 # infra-repo="git@github.com:Slvr-one/porfolio-config.git"
 
-echo "cluster name will be $name"
-
 # //////////////  INFRA  //////////////////////////////////////
+echo "cluster name will be $name"
 
 # aws configure 
 
@@ -24,8 +23,12 @@ popd
 
 # //////////////  CONFIG  //////////////////////////////////////
 
-aws eks --region $region update-kubeconfig --name $name 
+gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw region)
+# aws eks --region $region update-kubeconfig --name $name 
 # kubectl config set-context $name
+
+# K8s Dashbord - https://developer.hashicorp.com/terraform/tutorials/kubernetes/gke#deploy-and-access-kubernetes-dashboard
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
 
 # Applies the cert-manager CRDs:
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml

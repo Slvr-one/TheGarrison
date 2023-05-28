@@ -1,0 +1,11 @@
+--- 
+releases:
+
+  # release name.
+  - name: bm-app
+
+    # chart to install.
+    chart: ./app_chart
+
+    # install chart using helmfile. (false to uninstall)
+    installed: true

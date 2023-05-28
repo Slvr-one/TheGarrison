@@ -1,17 +1,17 @@
-{{- if .Values.Ingress.Enabled }}
+{{- if .Values.ingress.enabled }}
 {{- $fullName := include "BM.fullname" . -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "BM.fullname" . }}-ingress-nginx
   annotations:
-    # kubernetes.io/ingress.class: {{ .Values.Ingress.Class }}
+    # kubernetes.io/ingress.class: {{ .Values.ingress.class }}
     nginx.ingress.kubernetes.io/rewrite-target: /
     #cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
-  ingressClassName: {{ .Values.Ingress.Class }}
+  ingressClassName: {{ .Values.ingress.class }}
   rules:
-  - host: {{ .Values.User.Host }}
+  - host: {{ .Values.user.host }}
     http:
       paths:
       - path: /
@@ -20,10 +20,10 @@ spec:
           service:
             name: {{ include "BM.fullname" . }}-crm
             port:
-              number: {{ .Values.Services.app.servicePort}}
+              number: {{ .Values.services.app.servicePort}}
   tls:
   - hosts:
-    - {{ .Values.User.Host }}
-    secretName: {{ .Values.Environment }}-ssl-cert
+    - {{ .Values.user.host }}
+    secretName: {{ .Values.env }}-ssl-cert
 
 {{- end }}

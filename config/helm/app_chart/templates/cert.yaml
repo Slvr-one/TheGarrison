@@ -1,13 +1,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: {{ .Values.Environment }}-ssl-cert
+  name: {{ .Values.env }}-ssl-cert
   namespace: default
 spec:
-  secretName: {{ .Values.Environment }}-ssl-cert
+  secretName: {{ .Values.env }}-ssl-cert
   issuerRef:
-    name: {{ .Values.Environment }}-letsencrypt
+    name: {{ .Values.env }}-letsencrypt
     kind: ClusterIssuer
-  commonName: {{ .Values.User.Host }} 
+  commonName: {{ .Values.user.host }} 
   dnsNames:
-  - {{ .Values.User.Host }}
+  - {{ .Values.user.host }}

@@ -3,51 +3,46 @@
 # Declare variables to be passed into your templates.
 
 nameOverride: ""
-fullnameOverride: "dvir"
+fullnameOverride: "dvir-bm"
+# version: "0.0.1"
 
-# generalName: "bookmaker"
+# Bookmaker app
+app:
+  image: "839821061981.dkr.ecr.eu-central-1.amazonaws.com/bookmaker"
+  tag: 1.0.0
+  replicas: 3
 
-App:
-  #bookmaker app image:
-  Image: "839821061981.dkr.ecr.eu-central-1.amazonaws.com/bookmaker"
-  imageTag: 1.0.0
-  #bookmaker app replicas:
-  Replicas: 3
-
-Services:
+services:
   app:
     targetPort: 5000
-    #bookmaker service endpoint:
+    # bookmaker service endpoint:
     servicePort: 80
 
-#env-vars for bookmaker app:
-Persistency: yes
+# env-vars for bookmaker app:
+persistency: yes
 logLevel: "info"
 
+# Environment for certificate issues:
+env: "prod" #/ "staging"
 
+# Ingress config:
+ingress:
+  enabled: yes
+  class: "nginx"
 
-
-#environment for certificate issues:
-Environment: "prod" #/ "staging"
-
-#ingress config:
-Ingress:
-  Enabled: yes
-  Class: "nginx"
-
-#mongo-reset - cronJob:
+# MongoDB reset with cronJob:
 cronJob:
-  Enabled: no
-  # Schedule: "0 0 * * *" #once a day - midnight (@daily)
+  enabled: no
+  # schedule: "0 0 * * *" #once a day - midnight (@daily)
 
-#user detailes:
-User:
-  #your domain for ingress routing:   #IP.nip.io
-  Host: "dviross.zapto.org"  
-  #your email for CA cert managing
-  Email: "dviross@outlook.com"
-  #your time-zone for precise cron job
-  timeZone: "Asia/Jerusalem" #"Etc/UTC"   #check IL  (IST  IDT)
+# User detailes:
+user:
+  # Domain for ingress routing:   #IP.nip.io
+  host: "dviross.zapto.org"  
+  # Email for CA cert managing
+  email: "dviross@outlook.com"
+  # Time-zone for precise cron job
+  timeZone: "Asia/Jerusalem" # "Etc/UTC"   # IL  ("IST/IDT")
 
 #mongodb - overrides:
 mongodb:

@@ -1,8 +1,11 @@
 #!/bin/bash
 set -eux
 
+# minikube service $SERVICE --url
+
 # #expose argocd server service on 6003
-kubectl -n argocd port-forward svc/argo-cd-argocd-server 6003:80
+# kubectl -n argocd port-forward svc/argo-cd-argocd-server 6003:80
+`kubectl -n argocd port-forward svc/argo-cd-argocd-server 6003:443`
 
 
 # expose prometheus & grafana main ui services 
@@ -10,7 +13,6 @@ kubectl -n argocd port-forward svc/argo-cd-argocd-server 6003:80
 
 `kubectl -n prometheus port-forward svc/kube-prometheus-stack-prometheus 6002:9090`
 
-`kubectl -n argocd port-forward svc/argo-cd-argocd-server 6003:443`
 
 # while true; do kubectl port-forward — address X.X.X.X deployment/kibana 5601:5601 -n logging; done
 

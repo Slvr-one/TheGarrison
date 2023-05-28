@@ -5,8 +5,8 @@ kind:  CronJob #CronJobTimeZone
 metadata:
   name: {{ include "BM.fullname" . }}-mongo-reset
 spec:
-  schedule: {{ .Values.cronJob.Schedule }}
-  # timeZone: {{ .Values.User.timeZone}}
+  schedule: {{ .Values.cronJob.schedule }}
+  # timeZone: {{ .Values.user.timeZone}}
   jobTemplate:
     spec:
       template:

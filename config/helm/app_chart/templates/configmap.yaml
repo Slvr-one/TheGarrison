@@ -5,5 +5,5 @@ metadata:
 data:
   release: {{ include "BM.fullname" . }}
   service: {{ include "BM.fullname" . }}-mongodb-headless
-  PERSISTENCE: {{ .Values.Persistency | quote }}
+  PERSISTENCY: {{ .Values.persistency | quote }}
   LOG_LEVEL: {{ .Values.logLevel }}

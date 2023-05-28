@@ -13,7 +13,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 
 spec:
-  replicas: {{ .Values.App.Replicas }}
+  replicas: {{ .Values.app.replicas }}
   selector:
     matchLabels:
       {{- include "BM.selectorLabels" . | nindent 6 }}  
@@ -25,10 +25,10 @@ spec:
       imagePullSecrets:
           - name: regcred #need to be created !TODO
       containers:
-      - image: "{{ .Values.App.Image }}:{{ .Values.App.imageTag }}"
+      - image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
         name: {{ include "BM.fullname" . }}-app
         ports:
-        - containerPort: {{ .Values.Services.app.targetPort }}
+        - containerPort: {{ .Values.services.app.targetPort }}
         livenessProbe:
           httpGet:
             path: /
