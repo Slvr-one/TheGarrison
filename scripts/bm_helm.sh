@@ -6,5 +6,5 @@ release="BookMaker"
 
 # //////////////  HELM Install  //////////////////////////////////////
 
-helm install $release ./helm-chart/go-k8s/ \ 
-  --namespace go-k8s --create-namespace
+helm install $release ./config/helm/app_chart/ \ 
+  --namespace app --create-namespace
