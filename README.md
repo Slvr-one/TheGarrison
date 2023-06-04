@@ -2,12 +2,12 @@
 
 # Welcome to my portfolio! 👋
 
-## [ Project B∞kmaker ] 📖
+## Project B∞kmaker 📖
 
 </div>
 
 * Hi! 
-* This is my portfolio git repository where you can browse through the infrastructure of underling virtualization, demonstraiting some of App deploing and maintnence nedded, provisioned for local / cloude computing and clustering, by Terraform, Ansible, Kubeadm tools & more.
+* This is my portfolio git repository where you can browse through the infrastructure of underling virtualization, demonstraiting some App deploiment and maintnence nedded, provisioned for local / cloud computing and clustering, by Terraform, Ansible, Kubeadm & other tools.
 
 ## Table of Contents:
 
@@ -22,8 +22,7 @@
 ## about-the-project:
 * This is a simple app that allows you to create a new horse / investment (gamble on a horse) and save it to a database.
 * Bookmaker app for light gambling and API connection on several paths, built with golang.
-* For more details about the app, check the [App repo][bmrepo]
-
+* For more details about the app, check the separate [App repo][bmrepo]
 
 
 ## built-with:
@@ -84,16 +83,13 @@ To get started with this project, follow these steps:
 1. Clone this repo: 
 > `git clone https://github.com/Slvr-one/TheGarrison.git infra && cd infra`
 2. deploy infra:
-3. config infra:
-4. Clone the [app repo][bmrepo]: 
-> `git clone https://github.com/Slvr-one/bookmaker.git bm && cd bm`
+> `./scripts/init_cluster.sh`
+<!-- 3. config infra:
+> `./scripts/config_cluster.sh` -->
 <details>
 <summary>note!</summary>
 [make sure to set vars in the scripts to fit yourself]
 </details>
-
-5. build sources into an image: `./scripts/dockerize.sh`
-6. release the image to a private repo: `./scripts/release.sh` 
 
 ## roadmap 
 <!-- TODO -->
@@ -103,6 +99,8 @@ To get started with this project, follow these steps:
 - Implement user authentication
 - Add support for static file serving
 - Improve error handling & logging into elk
+- Organize into dirs
+- Add comments
 </details>
 
 <details>
@@ -111,6 +109,17 @@ To get started with this project, follow these steps:
 - Integrate with third-party APIs
 - Implement a recommendation engine
 - Scale the application to handle high traffic
+- add tools:
+  - general:
+    - cespare / reflex
+  - go:
+    - alpeb / go-finance
+    - goreleaser / goreleaser
+  - k8s:
+    - nabsul / k8s-ecr-login-renew
+    - aquasecurity / trivy
+    - avsthiago / kopylot
+    - uber-archive / makisu
 </details>
 
 ## Contact:

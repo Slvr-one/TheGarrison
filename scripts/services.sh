@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eux
 
 # minikube service $SERVICE --url
@@ -14,7 +14,7 @@ set -eux
 `kubectl -n prometheus port-forward svc/kube-prometheus-stack-prometheus 6002:9090`
 
 
-# while true; do kubectl port-forward — address X.X.X.X deployment/kibana 5601:5601 -n logging; done
+# while true; do kubectl port-forward — address X.X.X.X deployment/kibana 6004:5601 -n logging; done
 
 
 #patch argocd server to load balancer

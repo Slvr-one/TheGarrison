@@ -9,13 +9,16 @@ fullnameOverride: "dvir-bm"
 # Bookmaker app
 app:
   image: "839821061981.dkr.ecr.eu-central-1.amazonaws.com/bookmaker"
-  imageTag: 1.0.0
+  imageTag: "1.3.0"
   replicas: 3
   pullPolicy: Always
 
+imagePullSecrets: eu-central-1-ecr-registry # regcred
+
 services:
   app:
-    targetPort: 5000
+    # type: LoadBalancer
+    targetPort: 9090
     # bookmaker service endpoint:
     servicePort: 80
 
@@ -24,7 +27,7 @@ persistency: yes
 logLevel: "info"
 
 # Environment for certificate issues:
-env: "prod" #/ "staging"
+env: "staging" # "prod"
 
 # Ingress config:
 ingress:

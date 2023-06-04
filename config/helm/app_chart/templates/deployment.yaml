@@ -22,21 +22,23 @@ spec:
       labels:
         {{- include "BM.labels" . | nindent 8 }}
     spec:
+      {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
-          - name: regcred #need to be created !TODO
+      - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
       containers:
-      - image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
+      - image: "{{ .Values.app.image }}:{{ .Values.app.imageTag }}"
         name: {{ include "BM.fullname" . }}-app
         ports:
         - containerPort: {{ .Values.services.app.targetPort }}
-        livenessProbe:
-          httpGet:
-            path: /
-            port: app
-        readinessProbe:
-          httpGet:
-            path: /
-            port: app
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: app
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: app
         envFrom:
         - configMapRef:
             name: {{ include "BM.fullname" . }}-app

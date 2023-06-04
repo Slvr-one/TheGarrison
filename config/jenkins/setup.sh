@@ -1,36 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eu
-
-# //////////////  VARS  //////////////////////////////////////
-
-AWS_ACCOUNT="514095112279"
-AWS_REGION=`aws configure get region`
-EMAIL="dviross@outlook.com"
-SECRET_NAME=${AWS_REGION}-ecr-registry #regcred
-
-TOKEN=`aws ecr --region=$AWS_REGION get-authorization-token --output text --query authorizationData[].authorizationToken | base64 -d | cut -d: -f2`
-
-# //////////////  CREATE or REPLACE registry secret //////////////////////////////////////
-
-kubectl delete secret --ignore-not-found $SECRET_NAME
- 
-kubectl create secret docker-registry $SECRET_NAME \
-    --docker-server=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
-    --docker-email="${EMAIL}" \
-    --docker-password="${TOKEN}" \
-    --docker-username=AWS \
-    --docker-password=$(aws ecr get-login-password) 
-
-# kubectl get secrets regcred -o yaml > regcred.yaml
 
 # //////////////  HELM Install  //////////////////////////////////////
 # https://www.bogotobogo.com/DevOps/Docker/Docker-Kubernetes-Jenkins-Helm.php
 
 kubectl create namespace jenkins 
-helm repo add jenkinsci https://charts.jenkins.io
-helm repo update
 
-helm install jenkins -n jenkins -f jenkins-values.yaml jenkinsci/jenkins
+./scripts/docker_login.sh jenkins
+
+# helm repo add jenkinsci https://charts.jenkins.io
+# helm repo update
+
+# helm install jenkins -n jenkins -f jenkins-values.yaml jenkinsci/jenkins
 
 # //////////////  SECRET  //////////////////////////////////////
 
