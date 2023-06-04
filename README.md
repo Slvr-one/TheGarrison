@@ -165,5 +165,3 @@ This repository is maintained by [Dvir Gross](https://github.com/Slvr-one).
 [helm]: https://helm.sh/
 [ansible]: https://www.ansible.com/
 [helmf]: https://helmfile.readthedocs.io/en/latest/
- 
-[bmrepo]: https://github.com/Slvr-one/bookmaker
