@@ -131,7 +131,8 @@ If you have any questions or would like to learn more about my work, don't hesit
 
 
 ---
-**[`^        back to top        ^`](##Content-Table)**
+**[`back to top  ^`](##Content-Table)**
+
 This repository is maintained by [Dvir Gross](https://github.com/Slvr-one). 
 
 [go]: https://golang.org/
