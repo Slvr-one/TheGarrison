@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# . .env
 
 # //////////////  VARS  //////////////////////////////////////
 
-. .env
 name=$1
 id="id_ed25519_$name"
 

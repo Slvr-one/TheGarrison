@@ -5,8 +5,9 @@ set -euxo pipefail
 
 name="jenkins"
 tag=$1
+
 id="839821061981"
-region="eu-central-1" #frankfurt
+region=`aws configure get region` #frankfurt
 repo="$id.dkr.ecr.$region.amazonaws.com"
 
 #install awscli(.sh)
