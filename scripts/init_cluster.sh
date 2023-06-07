@@ -8,40 +8,40 @@ region=`aws configure get region`
 aws_account_id="514095112279"
 
 release="dvir"
-# infra-repo="git@github.com:Slvr-one/porfolio-config.git"
 
 # //////////////  INFRA  //////////////////////////////////////
 echo "cluster name will be $name"
 
 # aws configure 
 
-#to provision eks cluster with tf
-pushd ../infra/
+# Provision k8s cluster with tf
+pushd infra/
+
 terraform init
 terraform apply -auto-approve
+
 popd
 
 # //////////////  CONFIG  //////////////////////////////////////
 
-gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw region)
+# Set kubeconfig:
+# gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw region)
 # aws eks --region $region update-kubeconfig --name $name 
-# kubectl config set-context $name
+kubectl config set-context $name
 
 # K8s Dashbord - https://developer.hashicorp.com/terraform/tutorials/kubernetes/gke#deploy-and-access-kubernetes-dashboard
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
 
-# Applies the cert-manager CRDs:
+# Apply  cert-manager CRDs:
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml
 
 # Apply ArgoCD configuration files:
 ./config/argo/setup.sh
 
-pushd infra/argo
-kubectl -n argocd apply -f app-of-app.yaml
-popd
+kubectl -n argocd apply -f infra/manifests/argo/
 
 # Configure, port-forward services:
-./services.sh
+./scripts/services.sh
 
 # //////////////  EXTRA  //////////////////////////////////////
 

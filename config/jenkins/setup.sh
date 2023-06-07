@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -eu
 
-# //////////////  HELM Install  //////////////////////////////////////
+# //////////////  Install to cluster  //////////////////////////////////////
 # https://www.bogotobogo.com/DevOps/Docker/Docker-Kubernetes-Jenkins-Helm.php
+
+
+# //////////////  HELM Chart  //////////////////////////////////////
 
 kubectl create namespace jenkins 
 
@@ -12,6 +15,10 @@ kubectl create namespace jenkins
 # helm repo update
 
 # helm install jenkins -n jenkins -f jenkins-values.yaml jenkinsci/jenkins
+
+# //////////////  Manifests  //////////////////////////////////////
+
+kubectl create -f ./manifests --namespace jenkins
 
 # //////////////  SECRET  //////////////////////////////////////
 

@@ -1,0 +1,52 @@
+name: Portfolio Project CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: pypa/python-action@main
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install google-auth-oauthlib[pypi]
+          pip installgoogle-auth[pypi]
+          pip install google-cloud-storage[pypi]
+          pip install google-cloud-pubsub[pypi]
+          pip installgoogle-cloud-datalab[pypi]
+      - name: Login to Google Cloud Services
+        id: login
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
+        script:
+          #!/bin/bash
+          gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+          gcloud auth application-default login
+      - name: Build Model
+        dependsOn: [
+            'test',
+        ]
+        env:
+          PATH: $(env PATH):$PATH
+        Id: build_model
+        inputs:
+          modelName: ${{ env.MODEL_NAME }}
+          projectId: ${{ env.PROJECT_ID }}
+          region: us-central1
+          datasetId: ${{ env.DATASET_ID }}
+          bucket: ${{ env.BUCKET }}
+        persistCommands: true
+        entrypoint: bash
+        command: |
+          set +x # enable verbosity logging
+          
+          echo "Building model"
+          python /content/scripts/build_model.py \
+              --model_name ${{ env.modelName }} \
+              --project=

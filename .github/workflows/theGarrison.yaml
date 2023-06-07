@@ -1,0 +1,53 @@
+name: Github Workflow
+on:
+  push:
+    branches:
+      - master
+workflows:
+  build-and-deploy:
+    jobs:
+    - job: Building & Deploying
+      runs-on: ubuntu-latest
+      steps:
+      # Checkout code from GitLab
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Configure Kubernetes cluster
+      - name: Configure Kubernetes cluster
+        id: setup-kubeconfig
+        uses: google/kubernetes-e2e-utils@master
+        env:
+          GOOGLE_API_USE_EXECUTION_TIMEOUT: '1m'
+          GOOGLE_API_KEY_FILE_LOCATION: ${{ secrets.KUBECONFIG }}
+        with:
+          api_url: $(google-api-urls keytool)
+        if: always()
+      # Build Docker image
+      - name: Build Docker Image
+        id: build-image
+        run: docker-compose run --rm builder bash -c "$(docker-compose -f scripts/docker-compose.dev.yml build -q)"
+        env:
+          NODE_TOKEN: ${{ secrets.NODE_TOKEN }}
+      # Deploy to Kubernetes cluster
+      - name: Deploy to Kubernetes Cluster
+        env:
+          ARGOCD_URL: ${{ secrets.ARGOCD_URL }}
+          CLIENT_ID: ${{ secrets.CLIENT_SECRET }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REDIRECT_URI: http://localhost:8050
+      run: argocd deploy --non-interactive --loglevel info --force-regenerate ${{ env.REPO_DIR }}/src/main/argo && curl ${ARGOCD_URL}/argodashboard/login/ --data '{"username": "${env.USERNAME}", "password":"${env.PASSWORD}"}'
+if: always()
+on: 
+  schedule:
+    cron: 0 0 * * *
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    services:
+      - source: { url: secretServiceAccount }
+        connectionKey: secret-source-service-connection-key
+    steps:
+    # Run integration tests against public DNS IP
+    - name: Start Test Servers
+      id: test-start
+      run: ./terraform destroy --allow-destroy-without-state &amp;&amp; ./terraform apply --input='path=${REPO_DIR}' &amp;&amp; $(curl http://publicDNSIP?mode=integTest) &gt; $JOB_STEPS_LOG
