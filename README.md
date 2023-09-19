@@ -20,9 +20,9 @@
 
 
 ## about-the-project:
-* This is a simple app that allows you to create a new horse / investment (gamble on a horse) and save it to a database.
-* Bookmaker app for light gambling and API connection on several paths, built with golang.
-* For more details about the app, check the separate [App repo][bmrepo]
+* demontraiting a simple app that allows creation of a horsses, investments (gamble on a horse) and saves state to a database.
+* Bookmaker app for race betts and API connection on several paths, built using golang.
+* actual app code separate repo [App repo][bmrepo]
 
 
 ## built-with:
