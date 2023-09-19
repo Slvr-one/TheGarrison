@@ -7,7 +7,7 @@
 </div>
 
 * Hi! 
-* This is my portfolio git repository where you can browse through the infrastructure of underling virtualization, demonstraiting some App deploiment and maintnence nedded, provisioned for local / cloud computing and clustering, by Terraform, Ansible, Kubeadm & other tools.
+* This is my portfolio git repository where you can browse through the infrastructure of underling virtualization, demonstraiting some App deploiment and maintnence nedded, provisioned for local / cloud computing and clustering, using: Terraform, Ansible, Kubeadm & other tools.
 
 ## Content-Table
 
